@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from database import add_user, add_group, all_users, all_groups, users, remove_user
+from configs import cfg
 
 API_ID = "13197673"
 API_HASH = "052ce58975f187e3ab08d9fbaa66dfc8"
