@@ -27,9 +27,8 @@ START_BUTTONS = [[
 @app.on_message(filters.command("start"))
 async def start_cmd(client, message):
     await message.reply_photo(
-        photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
-        Caption="👋HELLO I AM MOVIE MAX CHANNEL BOT. can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission")
-   
+        photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg")
+        
 print("Bot Started")
 
 app.run()
