@@ -5,15 +5,13 @@ from database import add_user, add_group, all_users, all_groups, users, remove_u
 API_ID = "13197673"
 API_HASH = "052ce58975f187e3ab08d9fbaa66dfc8"
 BOT_TOKEN = "5621603973:AAHihJK21nsFEoIWJsREfutk5IguUoFmXIY"
-MONGO_URI = "mongodb+srv://ab:a@cluster0.xuftvdk.mongodb.net/?retryWrites=true&w=majority"
 
 app = Client(
     name="PyrogramBot",
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
-    mongo_uri=MONGO_UPI
-)
+    bot_token=BOT_TOKEN
+    )
 
 START_BUTTONS = [[
   InlineKeyboardButton("OTT EXPLORER 🕊️", url="https://t.me/+lwYLN-cyVJ1hYzU1"),
