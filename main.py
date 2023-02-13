@@ -1,1 +1,34 @@
+from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+
+API_ID = ""
+API_HASH = ""
+BOT_TOKEN = ""
+
+
+app = Client(
+    name="PyrogramBot",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    bot_token=BOT_TOKEN
+)
+
+START_BUTTONS = [[
+  InlineKeyboardButton("OTT EXPLORER 🕊️", url="https://t.me/+lwYLN-cyVJ1hYzU1"),
+  InlineKeyboardButton("MOVIE MAX || HD", url="https://t.me/+t4OM8GE5oGJjNGNl")
+  ]]
+
+
+
+
+@app.on_message(filters.command("start")
+async def start_cmd(client, message):
+    await message.reply_photo(
+        photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
+        Caption="👋HELLO I AM MOVIE MAX CHANNEL BOT. can approve users in Groups/Channels.Add me to your chat and promote me to admin with add members permission")
+
+print("Bot Started"
+
+app.run()
 
