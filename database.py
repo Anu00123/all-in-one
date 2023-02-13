@@ -1,4 +1,4 @@
-from pyrogram import MongoClient
+from pymongo import MongoClient
 from configs import cfg
 
 client = MongoClient(cfg.MONGO_URI)
