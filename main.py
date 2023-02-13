@@ -24,7 +24,7 @@ START_BUTTONS = [[
 
 
 
-@app.on_message(filters.command("start")
+@app.on_message(filters.command("start"))
 async def start_cmd(client, message):
     await message.reply_photo(
         photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
