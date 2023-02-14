@@ -11,7 +11,7 @@ API_HASH = "052ce58975f187e3ab08d9fbaa66dfc8"
 BOT_TOKEN = "5621603973:AAHihJK21nsFEoIWJsREfutk5IguUoFmXIY"
 
 app = Client(
-    name="PyrogramBot",
+    "PyrogramBot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN
