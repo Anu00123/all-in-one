@@ -1,0 +1,41 @@
+{
+    "name": "all in one",
+    "description": "Ho",
+    "repository": "https://github.com/Anu00123/all-in-one",
+    "logo": "https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
+    "keywords": [
+        "Bot",
+        "Telegram ",
+        "Pyrogram "
+    ],
+
+    "env": {
+    "API_ID": {
+      "description": "Enter your API_ID, get it from my.telegram.org/apps",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Enter your API_HASH, get it from my.telegram.org/apps",
+      "required": true
+    },
+    "BOT_TOKEN": {
+      "description": "Enter your Bot token, get it from @BotFather",
+      "required": true
+    },
+    "MONGO_URI": {
+      "description": "Enter your database url, get it from mongodb.com",
+      "required": true
+    }
+ },
+    "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+    "buildpacks": [
+        {
+            "url": "heroku/python"
+        }
+    ]
+}  
