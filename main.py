@@ -61,7 +61,7 @@ async def bcast_cmd(client, message):
         try:
             userid = usrs["user_id"]
             #print(int(userid))
-            if m.command[0] == "bcast":
+            if message.command[0] == "bcast":
                 await message.reply_to_message.copy(int(userid))
             success +=1
         except FloodWait as ex:
