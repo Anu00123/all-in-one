@@ -23,7 +23,7 @@ START_BUTTONS = [[
 
 
 
-
+#----start----
 @app.on_message(filters.command("start"))
 async def start_cmd(client, message):
     await message.reply_photo(
@@ -33,6 +33,7 @@ async def start_cmd(client, message):
 
 
 
+#----users-----
 @app.on_message(filters.command("users"))
 async def users_cmd(client, message):
     xx = all_users()
@@ -43,7 +44,45 @@ async def users_cmd(client, message):
 🙋‍♂️ Users : `{xx}`
 👥 Groups : `{x}`
 🚧 Total users & groups : `{tot}` """)
-        
+
+
+
+
+#-----broadcast-----
+@app.on_message(filters.command("bcast"))
+async def bcast_cmd(client, message):
+    allusers = users
+    lel = await message.reply_text("`⚡️ Processing...`")
+    success = 0
+    failed = 0
+    deactivated = 0
+    blocked = 0
+    for usrs in allusers.find():
+        try:
+            userid = usrs["user_id"]
+            #print(int(userid))
+            if m.command[0] == "bcast":
+                await m.reply_to_message.copy(int(userid))
+            success +=1
+        except FloodWait as ex:
+            await asyncio.sleep(ex.value)
+            if m.command[0] == "bcast":
+                await message.reply_to_message.copy(int(userid))
+        except errors.InputUserDeactivated:
+            deactivated +=1
+            remove_user(userid)
+        except errors.UserIsBlocked:
+            blocked +=1
+        except Exception as e:
+            print(e)
+            failed +=1
+
+    await lel.edit(f"✅Successfull to `{success}` users.\n❌ Faild to `{failed}` users.\n👾 Found `{blocked}` Blocked users \n👻 Found `{deactivated}` Deactivated users.")
+
+
+            
+
+      
 print("Bot Started")
 
 app.run()
