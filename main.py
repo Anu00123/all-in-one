@@ -67,7 +67,7 @@ async def bcast_cmd(client, message):
             success +=1
         except FloodWait as ex:
             await asyncio.sleep(ex.value)
-            if m.command[0] == "bcast":
+            if message.command[0] == "bcast":
                 await message.reply_to_message.copy(int(userid))
         except errors.InputUserDeactivated:
             deactivated +=1
