@@ -3,6 +3,9 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.flood_420 import FloodWait
 from configs import cfg
 from database import add_user, add_group, all_users, all_groups, users, remove_user
+import random, asyncio
+from pyrogram.errors import UserNotParticipant
+
 
 API_ID = "13197673"
 API_HASH = "052ce58975f187e3ab08d9fbaa66dfc8"
