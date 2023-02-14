@@ -17,6 +17,25 @@ app = Client(
     bot_token=BOT_TOKEN
     )
 
+
+
+
+gif = [
+    'https://telegra.ph/file/a5a2bb456bf3eecdbbb99.mp4',
+    'https://telegra.ph/file/03c6e49bea9ce6c908b87.mp4',
+    'https://telegra.ph/file/9ebf412f09cd7d2ceaaef.mp4',
+    'https://telegra.ph/file/293cc10710e57530404f8.mp4',
+    'https://telegra.ph/file/506898de518534ff68ba0.mp4',
+    'https://telegra.ph/file/dae0156e5f48573f016da.mp4',
+    'https://telegra.ph/file/3e2871e714f435d173b9e.mp4',
+    'https://telegra.ph/file/714982b9fedfa3b4d8d2b.mp4',
+    'https://telegra.ph/file/876edfcec678b64eac480.mp4',
+    'https://telegra.ph/file/6b1ab5aec5fa81cf40005.mp4',
+    'https://telegra.ph/file/b4834b434888de522fa49.mp4'
+]
+
+
+
 START_BUTTONS = [[
   InlineKeyboardButton("OTT EXPLORER 🕊️", url="https://t.me/+lwYLN-cyVJ1hYzU1"),
   InlineKeyboardButton("MOVIE MAX || HD", url="https://t.me/+t4OM8GE5oGJjNGNl")
@@ -81,6 +100,28 @@ async def bcast_cmd(client, message):
             failed +=1
 
     await lel.edit(f"✅Successfull to `{success}` users.\n❌ Faild to `{failed}` users.\n👾 Found `{blocked}` Blocked users \n👻 Found `{deactivated}` Deactivated users.")
+
+
+
+
+
+#------Autoaprove--------
+
+@app.on_chat_join_request(filters.group | filters.channel & ~filters.private)
+async def approve(client, message):
+    op = message.chat
+    kk = message.from_user
+    try:
+        add_group(message.chat.id)
+        await app.approve_chat_join_request(op.id, kk.id)
+        img = random.choice(gif)
+        await app.send_video(kk.id,img, "HELLO")
+        add_user(id.kk)
+    except errors.PeerIdInvalid as e:
+        print("user isn't start bot(means group)")
+    except Exception as err:
+        print(str(err))
+
 
 
             
