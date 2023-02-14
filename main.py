@@ -38,7 +38,7 @@ async def users_cmd(client, message):
     xx = all_users()
     x = all_groups()
     tot = int(xx + x)
-    await m.reply_text(text=f"""
+    await message.reply_text(text=f"""
  Chats Stats 🍀
 🙋‍♂️ Users : `{xx}`
 👥 Groups : `{x}`
