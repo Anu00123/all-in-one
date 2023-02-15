@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatJoinRequest
 from pyrogram.errors.exceptions.flood_420 import FloodWait
 from configs import cfg
 from database import add_user, add_group, all_users, all_groups, users, remove_user
@@ -108,18 +108,16 @@ async def bcast_cmd(client, message):
 
 #------Autoaprove--------
 
-@app.on_chat_join_request(filters.group | filters.channel & ~filters.private)
-async def approve(client, message):
-    op = message.chat
-    kk = message.from_user
+@app.on_chat_join_request(filters.group | filters.channel)
+async def approve(client, message: ChatJoinRequest):
+    chat = message.chat
+    user = message.from_user
     try:
-        add_group(message.chat.id)
-        await app.approve_chat_join_request(op.id, kk.id)
+        await client.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
+        add_group(chat.id)
         img = random.choice(gif)
-        await app.send_video(kk.id,img, "HELLO")
-        add_user(id.kk)
-    except errors.PeerIdInvalid as e:
-        print("user isn't start bot(means group)")
+        await client.send_video(chat_id=user.id, video=img)
+        add_user(user.id)
     except Exception as err:
         print(str(err))
 
