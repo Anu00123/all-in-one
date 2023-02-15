@@ -123,6 +123,12 @@ async def approve(client, message: ChatJoinRequest):
 
 
 
+#-------filesharing--------
+
+@app.on
+
+
+
             
 
       
