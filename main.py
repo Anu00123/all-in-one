@@ -123,7 +123,14 @@ async def approve(client, message: ChatJoinRequest):
 
 
 
-#-------filesharing--------
+#-------helpCommand--------
+
+@app.on_message(filters.command("help"))
+async def help_cmd(client, message):
+    await message.reply_photo(
+        photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
+        reply_markup=InlineKeyboardMarkup(START_BUTTONS)
+    )
 
 
 
