@@ -82,12 +82,3 @@ async def get_message_id(client, message):
         return 0
 
 subscribed = filters.create(is_subscribed)
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
