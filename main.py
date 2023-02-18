@@ -1,4 +1,4 @@
-from pyrogram import Client, filters, 
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatJoinRequest, Message
 from pyrogram.errors.exceptions.flood_420 import FloodWait
 from configs import cfg
