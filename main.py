@@ -6,7 +6,6 @@ from database import add_user, add_group, all_users, all_groups, users, remove_u
 from pyrogram.errors import UserNotParticipant
 import random, asyncio
 import time
-from helper_func import filters.create
 
 
 
@@ -50,7 +49,7 @@ START_BUTTONS = [[
 
 
 #----start----
-@app.on_message(filters.command("start") & filters.private & subscribed)
+@app.on_message(filters.command("start"))
 async def start_cmd(client, message):
     await message.reply_photo(
         photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
