@@ -6,6 +6,7 @@ from database import add_user, add_group, all_users, all_groups, users, remove_u
 from pyrogram.errors import UserNotParticipant
 import random, asyncio
 import time
+from helper_func.py import subscribed
 
 
 
