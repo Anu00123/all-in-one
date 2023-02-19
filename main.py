@@ -24,7 +24,7 @@ app = Client(
     )
 
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
+@app.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
 async def batch(client: Client, message: Message):
     while True:
         try:
