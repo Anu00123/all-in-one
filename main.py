@@ -17,6 +17,9 @@ app = Client(
     "PyrogramBot",
     api_id=API_ID,
     api_hash=API_HASH,
+    plugins={
+       "root": "plugins"
+    },
     bot_token=BOT_TOKEN
     )
 
