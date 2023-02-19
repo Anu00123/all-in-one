@@ -6,7 +6,7 @@ from database import add_user, add_group, all_users, all_groups, users, remove_u
 from pyrogram.errors import UserNotParticipant
 import random, asyncio
 import time
-from configs import SUDO
+from configs import ADMINS
 
 
 API_ID = "13197673"
