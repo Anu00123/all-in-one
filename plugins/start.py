@@ -7,7 +7,7 @@ from pyrogram.errors import UserNotParticipant
 import random, asyncio
 import time
 from main import app
-
+from configs import API_ID, API_HASH, BOT_TOKEN, MONGO_URI, CHANNEL_ID, ADMINS
 
 
 
