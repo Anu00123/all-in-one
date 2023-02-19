@@ -10,5 +10,5 @@ class Config:
    
 
 
-ADMINS = owner
+ADMINS = SUDO
 cfg = Config()
