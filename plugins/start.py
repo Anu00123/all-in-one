@@ -58,3 +58,58 @@ async def users_cmd(client, message):
 🚧 Total users & groups : `{tot}` """)
 
 
+
+
+#-----broadcast-----
+@app.on_message(filters.command("bcast"))
+async def bcast_cmd(client, message):
+    allusers = users
+    lel = await message.reply_text("`⚡️ Processing...`")
+    success = 0
+    failed = 0
+    deactivated = 0
+    blocked = 0
+    for usrs in allusers.find():
+        try:
+            userid = usrs["user_id"]
+            #print(int(userid))
+            if message.command[0] == "bcast":
+                await message.reply_to_message.copy(int(userid))
+            success +=1
+        except FloodWait as ex:
+            await asyncio.sleep(ex.value)
+            if message.command[0] == "bcast":
+                await message.reply_to_message.copy(int(userid))
+        except errors.InputUserDeactivated:
+            deactivated +=1
+            remove_user(userid)
+        except errors.UserIsBlocked:
+            blocked +=1
+        except Exception as e:
+            print(e)
+            failed +=1
+
+    await lel.edit(f"✅Successfull to `{success}` users.\n❌ Faild to `{failed}` users.\n👾 Found `{blocked}` Blocked users \n👻 Found `{deactivated}` Deactivated users.")
+
+
+
+
+
+#------Autoaprove--------
+
+@app.on_chat_join_request(filters.group | filters.channel)
+async def approve(client, message: ChatJoinRequest):
+    chat = message.chat
+    user = message.from_user
+    try:
+        await client.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
+        add_group(chat.id)
+        img = random.choice(gif)
+        await client.send_video(chat_id=user.id, video=img)
+        add_user(user.id)
+    except Exception as err:
+        print(str(err))
+
+
+
+
