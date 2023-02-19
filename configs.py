@@ -10,5 +10,5 @@ class Config:
    
 
 
-ADMINS = anuten
+ADMINS = owner
 cfg = Config()
