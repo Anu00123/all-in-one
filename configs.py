@@ -9,4 +9,6 @@ class Config:
     ADMINS = getenv("ADMINS", "5686364473")
    
 
+
+ADMINS = anuten
 cfg = Config()
