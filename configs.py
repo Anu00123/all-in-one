@@ -10,5 +10,4 @@ class Config:
    
 
 
-ADMINS = SUDO
 cfg = Config()
