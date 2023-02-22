@@ -48,11 +48,33 @@ START_BUTTONS = [[
 
 
 
+force_sub = "mmaxmovie"
 
 
-
-@Bot.on_message(filters.command('start') & filters.private)
+@app.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
+    if force_sub:
+        try:
+            user = await client.get_chat_member(force_sub, message.from_user.id)
+            if user.status == "kicked out":
+                await message.reply_text("Your banned 😔")
+                return
+        except UserNotParticipant:
+            await message.reply_text(
+                text="your not subscribe my channel",
+                reply_markup=InlineKeyboardMarkup( [[
+                 InlineKeyboardButton("join our channel", url=f"t.me/{force_sub}")
+                  ]]
+                 )
+            )
+            return
+ 
+
+
+
+
+
+
     await message.reply_photo(
         photo="https://te.legra.ph/file/b72a4501fb93ff4e06ba9.jpg",
         reply_markup=InlineKeyboardMarkup(START_BUTTONS)
@@ -61,7 +83,7 @@ async def not_joined(client: Client, message: Message):
 
 
 #----users-----
-@Bot.on_message(filters.command("users"))
+@app.on_message(filters.command("users"))
 async def users_cmd(client, message):
     xx = all_users()
     x = all_groups()
@@ -75,7 +97,7 @@ async def users_cmd(client, message):
 
 
 #-----broadcast-----
-@Bot.on_message(filters.command("bcast"))
+@app.on_message(filters.command("bcast"))
 async def bcast_cmd(client, message):
     allusers = users
     lel = await message.reply_text("`⚡️ Processing...`")
@@ -109,7 +131,7 @@ async def bcast_cmd(client, message):
 
 #------Autoaprove--------
 
-@Bot.on_chat_join_request(filters.group | filters.channel)
+@app.on_chat_join_request(filters.group | filters.channel)
 async def approve(client, message: ChatJoinRequest):
     chat = message.chat
     user = message.from_user
@@ -127,7 +149,7 @@ async def approve(client, message: ChatJoinRequest):
 
 #-------ping------
 
-@Bot.on_message(filters.command("ping"))
+@app.on_message(filters.command("ping"))
 async def ping_cmd(client, message):
     start_t = time.time()
     rm = await message.reply_text("...")
